@@ -37,7 +37,7 @@ graph LR
 ```
 
 ## 3. Docker Optimization (Multi-Stage Builds)
-We used multi-stage builds to significantly reduce the final image size and improve security.
+I used multi-stage builds to significantly reduce the final image size and improve security.
 
 ### How to verify image size reduction:
 1. Open your terminal.
