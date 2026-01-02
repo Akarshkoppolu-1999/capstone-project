@@ -1,0 +1,18 @@
+# Stage 1: Build stage
+FROM nginx:alpine as builder
+
+# Copy static files to the build stage
+COPY . /usr/share/nginx/html
+
+# Stage 2: Final stage
+FROM nginx:alpine
+
+# Copy files from builder
+COPY --from=builder /usr/share/nginx/html /usr/share/nginx/html
+
+# Custom nginx config to proxy API requests if needed
+# For now, we'll keep it simple and assume the backend is reachable via routing or same host
+
+EXPOSE 80
+
+CMD ["nginx", "-g", "daemon off;"]

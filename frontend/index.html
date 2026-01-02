@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capstone Project CI/CD</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+        h1 { margin-bottom: 1rem; }
+        .status-box {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+        }
+        button {
+            background: #4fd1c5;
+            color: #2d3748;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        button:hover { transform: scale(1.05); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Capstone CI/CD App</h1>
+        <p>A 2-tier web application deployed via Jenkins.</p>
+        <div class="status-box">
+            <p id="api-status">Connecting to Backend...</p>
+            <p id="visit-count"></p>
+            <button onclick="checkApi()">Refresh Status</button>
+        </div>
+    </div>
+
+    <script>
+        async function checkApi() {
+            try {
+                const response = await fetch('/api/init');
+                const data = await response.json();
+                document.getElementById('api-status').innerText = data.message;
+                document.getElementById('visit-count').innerText = "Total Visits: " + data.visit_count;
+            } catch (error) {
+                document.getElementById('api-status').innerText = "error connect failed to Backend API";
+                console.error(error);
+            }
+        }
+        checkApi();
+    </script>
+</body>
+</html>
