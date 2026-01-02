@@ -2,7 +2,7 @@
 
 This project is a complete, production-ready CI/CD implementation for a 2-tier web application (Python Flask + PostgreSQL + Nginx). It is built to demonstrate modern DevOps practices including Multi-stage Docker builds, non-root security, and automated Jenkins pipelines.
 
-## 📂 Folder Structure
+##  Folder Structure
 - **`backend/`**: The logic layer (API).
     - `app.py`: Flask application that connects to PostgreSQL and handles visit logic.
     - `dockerfile`: Multi-stage Dockerfile for the backend (Python slim + builder stage).
@@ -16,12 +16,12 @@ This project is a complete, production-ready CI/CD implementation for a 2-tier w
 - **`DOCUMENTATION.md`**: Technical architecture and pipeline diagrams.
 - **`SUBMISSION_GUIDE.md`**: STEP-BY-STEP history and SCREENSHOT instructions for your presentation.
 
-## 🚀 How to Run locally
+##  How to Run locally
 1. Ensure your Port 8081 is free.
 2. Run `docker-compose up --build`.
 3. Open `http://localhost:8081`.
 
-## 🛠️ Tech Stack
+##  Tech Stack
 - **Languages**: Python (Backend), HTML/CSS/JS (Frontend).
 - **Database**: PostgreSQL 13.
 - **Server**: Nginx (Web Server + Reverse Proxy).
