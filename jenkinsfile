@@ -6,6 +6,11 @@ pipeline {
         IMAGE_NAME_FRONTEND = "capstone-frontend"
     }
     stages {
+        stage('Debug - List Files') {
+            steps {
+                sh 'ls -R'
+            }
+        }
         stage('Build') {
             steps {
                 echo 'Building Docker Images...'
