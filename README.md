@@ -14,7 +14,6 @@ This project is a complete, production-ready CI/CD implementation for a 2-tier w
 - **`docker-compose.yml`**: Orchestrates the DB, Backend, and Frontend containers locally.
 - **`Jenkinsfile`**: The automated pipeline script (Build -> Test -> Security -> Deploy -> Verify).
 - **`DOCUMENTATION.md`**: Technical architecture and pipeline diagrams.
-- **`SUBMISSION_GUIDE.md`**: STEP-BY-STEP history and SCREENSHOT instructions for your presentation.
 
 ##  How to Run locally
 1. Ensure your Port 8081 is free.
