@@ -60,7 +60,7 @@ pipeline {
             echo 'Pipeline finished.'
         }
         success {
-            echo 'Deployment successful! Access at http://localhost:8080'
+            echo 'Deployment successful! Access at http://localhost:8081'
         }
         failure {
             echo 'Pipeline failed. Check logs.'
