@@ -1,0 +1,19 @@
+pipeline {
+    agent any
+    stages {
+        stage('Build Images') {
+            steps {
+                echo 'Building Docker Images...'
+                sh 'docker-compose build'
+            }
+        }
+        stage('Test Local Run') {
+            steps {
+                echo 'Verifying containers can start...'
+                sh 'docker-compose up -d'
+                sh 'docker-compose ps'
+                sh 'docker-compose down'
+            }
+        }
+    }
+}
