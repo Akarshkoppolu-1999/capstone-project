@@ -1,5 +1,5 @@
 # Stage 1: Build stage
-FROM python:3.9-slim as builder
+FROM python:3.9-slim AS builder
 
 WORKDIR /app
 
@@ -10,7 +10,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 COPY requirements.txt .
-RUN pip install --no-cache-dir --user -r requirements.txt
+# Install packages to a temporary directory
+RUN pip install --no-cache-dir --prefix=/install -r requirements.txt
 
 # Stage 2: Final stage
 FROM python:3.9-slim
@@ -22,12 +23,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libpq5 \
     && rm -rf /var/lib/apt/lists/*
 
-# Copy only the necessary files from the builder stage
-COPY --from=builder /root/.local /root/.local
+# Copy installed packages from the builder stage prefix
+COPY --from=builder /install /usr/local
 COPY . .
-
-# Update PATH to include the user's local bin
-ENV PATH=/root/.local/bin:$PATH
 
 # Run as non-root user for security
 RUN useradd -m myuser && chown -R myuser /app
