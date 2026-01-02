@@ -49,7 +49,14 @@ I used multi-stage builds to significantly reduce the final image size and impro
 - **Staging (Jenkins)**: Click "Build Now" in Jenkins.
 - **Stop**: Run `docker-compose down`.
 
-## 5. Troubleshooting
+## 5. Testing URLs (Verification)
+| Service | Unified Port (8081) | Direct Port (5000) |
+| :--- | :--- | :--- |
+| **Frontend UI** | [http://localhost:8081](http://localhost:8081) | N/A |
+| **Backend Init** | [http://localhost:8081/api/init](http://localhost:8081/api/init) | [http://localhost:5000/api/init](http://localhost:5000/api/init) |
+| **Health Check** | [http://localhost:8081/api/health](http://localhost:8081/api/health) | [http://localhost:5000/health](http://localhost:5000/health) |
+
+## 6. Troubleshooting
 | Issue | Solution |
 | :--- | :--- |
 | **Port Conflict** | Change the port in `docker-compose.yml` or run `docker-compose down`. |
